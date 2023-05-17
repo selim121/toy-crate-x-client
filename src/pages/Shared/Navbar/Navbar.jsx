@@ -35,14 +35,19 @@ const Navbar = () => {
                     </div>
 
                 </div>
-                <div className="navbar-center hidden lg:flex lg:me-auto">
+                <div className="navbar-center hidden lg:flex lg:ms-auto">
                     <ul className="menu menu-horizontal px-1">
                         {navItems}
                     </ul>
                 </div>
                 <div className="me-auto">
-                    <img className='h-8 w-8 rounded-full' src="https://media.istockphoto.com/id/1300512215/photo/headshot-portrait-of-smiling-ethnic-businessman-in-office.jpg?b=1&s=170667a&w=0&k=20&c=TXCiY7rYEvIBd6ibj2bE-VbJu0rRGy3MlHwxt2LHt9w=" alt="" />
-                    <Link className='ms-4 font-bold rounded-lg bg-white border-2 border-pink-100 px-4 py-2 transition duration-300 ease-in-out hover:bg-pink-100 hover:text-black'>Sign In</Link>
+                    <div className="avatar">
+                        <div className="w-8 rounded-full ring ring-[#ce8c8c66] ring-offset-base-100 ring-offset-2">
+                            <img className='h-8 w-8 rounded-full' src="https://media.istockphoto.com/id/1300512215/photo/headshot-portrait-of-smiling-ethnic-businessman-in-office.jpg?b=1&s=170667a&w=0&k=20&c=TXCiY7rYEvIBd6ibj2bE-VbJu0rRGy3MlHwxt2LHt9w=" alt="" />
+                        </div>
+                    </div>
+
+                    <Link className='ms-4 font-bold rounded-lg bg-white border-2 border-[#d2bfbf66] px-4 py-2 transition duration-300 ease-in-out hover:bg-[#ce8c8c66]'>Sign In</Link>
                 </div>
             </div>
             <div className="ocean hidden lg:block">
