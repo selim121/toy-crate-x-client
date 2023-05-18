@@ -45,11 +45,11 @@ const Navbar = () => {
         }
       }, [user?.email])
 
-    // console.log(profile);
+    // console.log(user);
 
     return (
         <>
-            <div className="bg-[#ce8c8c66] h20 flex justify-center">
+            <div className="bg-[#ce8c8c66] h-20 flex justify-center">
                 <div className="hidden lg:block">
                     <Link to={'/'} className="">
                         <img src={logo} alt="" />
@@ -81,10 +81,10 @@ const Navbar = () => {
                         user?.email ? <>
                             <div className="avatar profile-img">
                                 <div className="w-8 rounded-full ring ring-[#ce8c8c66] ring-offset-base-100 ring-offset-2">
-                                    <img className='h-8 w-8 rounded-full' src={profile.photo && profile.photo} alt="" />
+                                    <img className='h-8 w-8 rounded-full' src={profile?.photo && profile.photo || user?.photoURL && user.photoURL} alt="" />
                                 </div>
                             </div>
-                            <p className="absolute top-20 text-[#ab6032f1] profile-name hidden">{profile.name && profile.name}</p>
+                            <p className="absolute top-20 text-[#ab6032f1] profile-name hidden">{profile?.name && profile.name || user?.displayName && user.displayName}</p>
                             <Link onClick={handleSignOut} className='ms-4 font-bold rounded-lg bg-white border-2 border-[#d2bfbf66] px-4 py-2 transition duration-300 ease-in-out hover:bg-[#ce8c8c66]' to={'sign-in'}>Sign Out</Link>
                         </>
                             :

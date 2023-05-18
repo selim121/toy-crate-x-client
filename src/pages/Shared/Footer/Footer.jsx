@@ -4,7 +4,7 @@ import logo from '../../../assets/logo.svg';
 const Footer = () => {
     return (
         <>
-            <footer className="footer p-10 bg-[#ce8c8c66] text-base-content mt-5">
+            <footer className="footer p-10 bg-[#ce8c8c66] text-base-content">
                 <div>
                     <img src={logo} alt="" />
                     <p>Best service is our promise. <br /> Promises distribute all over the country.</p>

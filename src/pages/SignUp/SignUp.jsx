@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -7,39 +8,42 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 const SignUp = () => {
     const { user, createUser } = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
 
-    if (user?.email) {
-        return <>
-            <Navigate to={'/'} replace></Navigate>
-        </>
-    }
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        fetch('https://toy-crate-x-server.vercel.app/users', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.insertedId) {
-                    alert('Users added successfully');
-                    // form.reset();
-                }
-            })
-
-
+        setSuccess('');
+        
         createUser(data.email, data.password)
             .then(result => {
+                setError('');
+                setSuccess('User has been created successfully.')
                 const user = result.user;
                 console.log(user);
+                fetch('https://toy-crate-x-server.vercel.app/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.insertedId) {
+                            alert('Users added successfully');
+                            // form.reset();
+                        }
+                    })
+
+                
 
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                setError('Something wrong, try again.');
+            })
     };
 
 
@@ -79,6 +83,10 @@ const SignUp = () => {
                             </div>
                         </form>
                         <p className='my-4 text-center'>Already have an account ? <Link to={'/sign-in'} className='text-[#ab6032f1] font-bold'>Sign In</Link></p>
+                        <div className="mt-2 text-center">
+                            <p className="text-red-700 my-2">{error}</p>
+                            <p className="text-green-700 my-2">{success}</p>
+                        </div>
                     </div>
                 </div>
             </div>
