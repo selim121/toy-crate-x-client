@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.svg';
 import './Navbar.css';
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
 
@@ -12,6 +14,17 @@ const Navbar = () => {
         <li><Link to={'/add-a-toy'} className="hover:text-[#ab6032f1]">Add A Toys</Link></li>
         <li><Link to={'/blog'} className="hover:text-[#ab6032f1]">Blogs</Link></li>
     </>
+
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleSignOut = () => {
+        logOut()
+            .then(() => {})
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     return (
         <>
@@ -47,7 +60,14 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <Link className='ms-4 font-bold rounded-lg bg-white border-2 border-[#d2bfbf66] px-4 py-2 transition duration-300 ease-in-out hover:bg-[#ce8c8c66]' to={'sign-in'}>Sign In</Link>
+                    {
+                        user?.email ? <Link onClick={handleSignOut} className='ms-4 font-bold rounded-lg bg-white border-2 border-[#d2bfbf66] px-4 py-2 transition duration-300 ease-in-out hover:bg-[#ce8c8c66]' to={'sign-in'}>Sign Out</Link>
+                        :
+                        <Link className='ms-4 font-bold rounded-lg bg-white border-2 border-[#d2bfbf66] px-4 py-2 transition duration-300 ease-in-out hover:bg-[#ce8c8c66]' to={'/sign-in'}>Sign In</Link>
+                    }
+
+                    
+                    
                 </div>
             </div>
             <div className="ocean hidden lg:block">

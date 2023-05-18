@@ -1,13 +1,41 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import google from '../../assets/images/icon/google.svg';
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 
 const SignIn = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const {user, signIn, signInWithGoogle} = useContext(AuthContext);
 
+    if(user?.email) {
+        return <>
+            <Navigate to={'/'} replace></Navigate>
+        </>
+    }
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        signIn(data.email, data.password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.log(error))
+    };
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => {
+            console.log('error', error.message);
+        })
+    }
 
     return (
         <div className="bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1530325553241-4f6e7690cf36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dG95fGVufDB8fDB8fA%3D%3D&w=1000&q=80')" }}>
@@ -38,7 +66,7 @@ const SignIn = () => {
                         <p className='my-4 text-center'>New to ToyCrateX ? <Link to={'/sign-up'} className='text-[#ab6032f1] font-bold'>Sign Up</Link></p>
                         <div className="divider">OR</div>
                         <div className="my-5 bg-white py-4 rounded-xl shadow-2xl">
-                            <Link className="text-[#ab6032f1] ">
+                            <Link onClick={handleGoogleSignIn} className="text-[#ab6032f1] ">
                                 <div className="flex justify-center">
                                     <img src={google} className="h-6 me-2" /> Sign in with Google
                                 </div>
