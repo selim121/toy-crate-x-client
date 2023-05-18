@@ -23,7 +23,7 @@ const Navbar = () => {
                 </div>
             </div>
 
-            <div className="navbar h-20 mb-4">
+            <div className="navbar h-20">
                 <div className="navbar-start lg:hidden">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -47,7 +47,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <Link className='ms-4 font-bold rounded-lg bg-white border-2 border-[#d2bfbf66] px-4 py-2 transition duration-300 ease-in-out hover:bg-[#ce8c8c66]'>Sign In</Link>
+                    <Link className='ms-4 font-bold rounded-lg bg-white border-2 border-[#d2bfbf66] px-4 py-2 transition duration-300 ease-in-out hover:bg-[#ce8c8c66]' to={'sign-in'}>Sign In</Link>
                 </div>
             </div>
             <div className="ocean hidden lg:block">
