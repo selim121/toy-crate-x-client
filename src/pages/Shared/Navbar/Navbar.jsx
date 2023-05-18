@@ -1,30 +1,51 @@
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.svg';
 import './Navbar.css';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
 
+    const { user, logOut } = useContext(AuthContext);
+
+    const [profile, setProfile] = useState('');
+
+    // console.log(user);
 
     const navItems = <>
         <li><Link to={'/'} className="hover:text-[#ab6032f1]">Home</Link></li>
         <li><Link to={'/all-toys'} className="hover:text-[#ab6032f1]">All Toys</Link></li>
-        <li><Link to={'/my-toys'} className="hover:text-[#ab6032f1]">My Toys</Link></li>
-        <li><Link to={'/add-a-toy'} className="hover:text-[#ab6032f1]">Add A Toys</Link></li>
+        {
+            user?.email && <li><Link to={'/my-toys'} className="hover:text-[#ab6032f1]">My Toys</Link></li>
+        }
+        {
+            user?.email && <li><Link to={'/add-a-toy'} className="hover:text-[#ab6032f1]">Add A Toy</Link></li>
+        }
         <li><Link to={'/blog'} className="hover:text-[#ab6032f1]">Blogs</Link></li>
     </>
 
 
-    const { user, logOut } = useContext(AuthContext);
-
     const handleSignOut = () => {
         logOut()
-            .then(() => {})
+            .then(() => { })
             .catch((error) => {
                 console.log(error);
             })
     }
+
+    useEffect(() => {
+        if (user?.email) { 
+          fetch('https://toy-crate-x-server.vercel.app/allUsers')
+            .then(res => res.json())
+            .then(data => {
+              const result = data.find(u => u.email === user.email);
+              setProfile(result);
+            })
+            .catch(error => console.log(error));
+        }
+      }, [user?.email])
+
+    // console.log(profile);
 
     return (
         <>
@@ -54,20 +75,24 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="me-auto">
-                    <div className="avatar">
-                        <div className="w-8 rounded-full ring ring-[#ce8c8c66] ring-offset-base-100 ring-offset-2">
-                            <img className='h-8 w-8 rounded-full' src="https://media.istockphoto.com/id/1300512215/photo/headshot-portrait-of-smiling-ethnic-businessman-in-office.jpg?b=1&s=170667a&w=0&k=20&c=TXCiY7rYEvIBd6ibj2bE-VbJu0rRGy3MlHwxt2LHt9w=" alt="" />
-                        </div>
-                    </div>
+
 
                     {
-                        user?.email ? <Link onClick={handleSignOut} className='ms-4 font-bold rounded-lg bg-white border-2 border-[#d2bfbf66] px-4 py-2 transition duration-300 ease-in-out hover:bg-[#ce8c8c66]' to={'sign-in'}>Sign Out</Link>
-                        :
-                        <Link className='ms-4 font-bold rounded-lg bg-white border-2 border-[#d2bfbf66] px-4 py-2 transition duration-300 ease-in-out hover:bg-[#ce8c8c66]' to={'/sign-in'}>Sign In</Link>
+                        user?.email ? <>
+                            <div className="avatar profile-img">
+                                <div className="w-8 rounded-full ring ring-[#ce8c8c66] ring-offset-base-100 ring-offset-2">
+                                    <img className='h-8 w-8 rounded-full' src={profile.photo && profile.photo} alt="" />
+                                </div>
+                            </div>
+                            <p className="absolute top-20 text-[#ab6032f1] profile-name hidden">{profile.name && profile.name}</p>
+                            <Link onClick={handleSignOut} className='ms-4 font-bold rounded-lg bg-white border-2 border-[#d2bfbf66] px-4 py-2 transition duration-300 ease-in-out hover:bg-[#ce8c8c66]' to={'sign-in'}>Sign Out</Link>
+                        </>
+                            :
+                            <Link className='ms-4 font-bold rounded-lg bg-white border-2 border-[#d2bfbf66] px-4 py-2 transition duration-300 ease-in-out hover:bg-[#ce8c8c66]' to={'/sign-in'}>Sign In</Link>
                     }
 
-                    
-                    
+
+
                 </div>
             </div>
             <div className="ocean hidden lg:block">

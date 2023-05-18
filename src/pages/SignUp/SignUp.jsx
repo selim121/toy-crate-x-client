@@ -6,22 +6,40 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 
 const SignUp = () => {
-    const {user, createUser} = useContext(AuthContext);
+    const { user, createUser } = useContext(AuthContext);
 
-    if(user?.email) {
+
+    if (user?.email) {
         return <>
             <Navigate to={'/'} replace></Navigate>
         </>
     }
-
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        createUser(data.email, data.password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
+        fetch('https://toy-crate-x-server.vercel.app/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
         })
-        .catch (error => console.error(error))
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    alert('Users added successfully');
+                    // form.reset();
+                }
+            })
+
+
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+
+            })
+            .catch(error => console.error(error))
     };
 
 

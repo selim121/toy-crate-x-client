@@ -37,4 +37,10 @@
       50% {transform: translateX(-25%);}
       100% {transform: translateX(-50%);}
   }
+
+
+  .profile-img:hover + .profile-name {
+    display: block;
+  }
+  
   
