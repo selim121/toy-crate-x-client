@@ -7,6 +7,8 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import AllToys from "../pages/Toys/AllToys/AllToys";
 import MyToys from "../pages/Toys/MyToys/MyToys";
 import AddAToy from "../pages/Toys/AddAToys/AddAToy";
+import PrivateRoute from "./PrivateRoute";
+import ToyDetails from "../pages/ToyDetails/ToyDetails";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +39,13 @@ const router = createBrowserRouter([
         {
             path: 'add-a-toy',
             element: <AddAToy></AddAToy>
+        },
+        {
+            path: 'details/:id',
+            element:  <PrivateRoute>
+                <ToyDetails></ToyDetails>
+            </PrivateRoute>,
+            loader: ({params}) => fetch(`https://toy-crate-x-server.vercel.app/details/${params.id}`)
         }
       ]
     },

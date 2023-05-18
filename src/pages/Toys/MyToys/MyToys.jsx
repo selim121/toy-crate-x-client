@@ -23,13 +23,13 @@ const MyToys = () => {
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Products</th>
-                        <th>Description</th>
-                        <th>Category</th>
-                        <th>Rating</th>
-                        <th>Quantity</th>
-                        <th>Seller</th>
-                        <th>Edit</th>
+                        <th className="text-[#ab6032f1]">Products</th>
+                        <th className="text-[#ab6032f1]">Description</th>
+                        <th className="text-[#ab6032f1]">Category</th>
+                        <th className="text-[#ab6032f1]">Rating</th>
+                        <th className="text-[#ab6032f1]">Quantity</th>
+                        <th className="text-[#ab6032f1]">Seller</th>
+                        <th className="text-[#ab6032f1]">Edit</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -1,15 +1,16 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const ToyCard = ({toy}) => {
+const ToyCard = ({ toy }) => {
 
-    const {name, productName, price, quantity, subCategory, toyPhoto} = toy;
+    const { _id, name, productName, price, quantity, subCategory, toyPhoto } = toy;
 
     const [isHovered, setIsHovered] = useState(false);
 
-    // console.log(toy);
+    // console.log(_id);
 
     return (
-        <div>
+        <>
             <div
                 className="bg-white rounded-lg overflow-hidden shadow-md relative"
                 onMouseEnter={() => setIsHovered(true)}
@@ -27,15 +28,13 @@ const ToyCard = ({toy}) => {
                     <p className="text-gray-600 text-sm mb-2">Posted by: <span className="text-[#ab6032f1]">{name}</span></p>
                     {isHovered && (
                         <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-90 p-4 flex justify-between items-center">
-                            <button className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md">
-                                View Details
-                            </button>
+                            <Link to={`/details/${_id}`} className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md">View Details</Link>
                             <p className="text-gray-600 text-sm mb-0">Available quantity: <span className="text-[#ab6032f1]">{quantity}</span></p>
                         </div>
                     )}
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

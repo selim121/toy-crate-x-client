@@ -43,7 +43,7 @@ const MyToyCard = ({ toy }) => {
                     <span className="badge badge-ghost badge-sm">{email}</span>
                 </td>
                 <th className="w-1/5 md:w-auto">
-                    <button className="btn btn-ghost btn-xs">Update</button>
+                    <button className="btn btn-ghost btn-xs hover:text-[#ab6032f1]">Update</button>
                 </th>
             </tr>
         </>
