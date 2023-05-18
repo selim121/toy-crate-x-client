@@ -27,7 +27,8 @@ const router = createBrowserRouter([
         },
         {
             path: 'all-toys',
-            element: <AllToys></AllToys>
+            element: <AllToys></AllToys>,
+            loader: () => fetch('https://toy-crate-x-server.vercel.app/allToys')
         },
         {
             path: 'my-toys',

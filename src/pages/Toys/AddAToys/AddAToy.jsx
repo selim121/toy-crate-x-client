@@ -1,31 +1,65 @@
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 
 const AddAToy = () => {
 
+    const {user} = useContext(AuthContext);
+    const [profile, setProfile] = useState('');
+
+    
+    useEffect(() => {
+        if (user?.email) { 
+            fetch('https://toy-crate-x-server.vercel.app/allUsers')
+            .then(res => res.json())
+            .then(data => {
+                const result = data.find(u => u.email === user.email);
+                setProfile(result);
+            })
+            .catch(error => console.log(error));
+        }
+    }, [user?.email])
+    
+    // console.log(profile);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        fetch('https://toy-crate-x-server.vercel.app/toys', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(res => res.json())
+                    .then(toy => {
+                        if (toy.insertedId) {
+                            alert('Toy added successfully');
+                            // form.reset();
+                        }
+                    })
+    };
 
     return (
         <>
-            <div className="mt-3 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://cdn.pixabay.com/photo/2016/02/23/11/22/blank-1217348_1280.jpg')"}}>
+            <div className="mt-3 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://wallpaperaccess.com/full/4779576.jpg')"}}>
 
             <div className="rounded-xl shadow-2xl hero">
                 <div className="card-body mt-12">
-                    <form className="space-y-0 md:space-y-3" onSubmit={handleSubmit(onSubmit)}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="grid grid-cols-1 md:grid-cols-2">
                             <div className="form-control me-4">
                                 <label className="label">
                                     <span className="label-text">Seller Name</span>
                                 </label>
-                                <input type="text" placeholder="Seller name" className="input input-bordered" {...register("name", { required: true })} />
+                                <input type="text" defaultValue={profile.name} className="input input-bordered" {...register("name", { required: true })} />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Seller Email</span>
                                 </label>
-                                <input type="email" placeholder="Seller email" className="input input-bordered" {...register("email", { required: true })} />
+                                <input type="email" defaultValue={profile.email} className="input input-bordered" {...register("email", { required: true })} />
                             </div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2">
@@ -66,7 +100,14 @@ const AddAToy = () => {
                             <label className="label">
                                 <span className="label-text">Toy Photo URL</span>
                             </label>
-                            <input type="text" placeholder="Photo URL of the toy" className="input input-bordered" {...register("toyPhoto", { required: true })} />
+                            <input type="url" placeholder="Photo URL of the toy" className="input input-bordered" {...register("toyPhoto", { required: true })} />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Details Description</span>
+                            </label>
+                            
+                            <input type="text" placeholder="Details description" className="input input-bordered" {...register("toyPhoto", { required: true })} />
                         </div>
                         {errors.exampleRequired && <span>This field is required</span>}
                         <div className="form-control">
