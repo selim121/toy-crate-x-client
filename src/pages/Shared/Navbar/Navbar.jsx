@@ -95,7 +95,7 @@ const Navbar = () => {
 
                 </div>
             </div>
-            <div className="ocean hidden lg:block">
+            <div className="ocean max-w-7xl mx-auto hidden lg:block">
                 <div className="wave"></div>
                 <div className="wave"></div>
                 <div className="wave"></div>
