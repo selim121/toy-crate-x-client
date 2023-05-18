@@ -1,9 +1,8 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import google from '../../assets/images/icon/google.svg';
 
 
-const SignIn = () => {
+const SignUp = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
@@ -17,6 +16,12 @@ const SignIn = () => {
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-control">
                                 <label className="label">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input type="text" placeholder="Your name" className="input input-bordered" {...register("name", { required: true })} />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
                                 <input type="email" placeholder="Your email" className="input input-bordered" {...register("email", { required: true })} />
@@ -26,24 +31,19 @@ const SignIn = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" placeholder="Your password" className="input input-bordered" {...register("password", { required: true })} />
+                            </div>
+                            <div className="form-control">
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover text-[#ab6032f1]">Forgot password?</a>
+                                    <span className="label-text">Photo URL</span>
                                 </label>
+                                <input type="text" placeholder="Your photo url" className="input input-bordered" {...register("photo", { required: true })} />
                             </div>
                             {errors.exampleRequired && <span>This field is required</span>}
                             <div className="form-control mt-6">
-                                <input className="btn border-0 bg-[#ab6032f1]" type="submit" value="Sign In" />
+                                <input className="btn border-0 bg-[#ab6032f1]" type="submit" value="Sign Up" />
                             </div>
                         </form>
-                        <p className='my-4 text-center'>New to ToyCrateX ? <Link to={'/sign-up'} className='text-[#ab6032f1] font-bold'>Sign Up</Link></p>
-                        <div className="divider">OR</div>
-                        <div className="my-5 bg-white py-4 rounded-xl shadow-2xl">
-                            <Link className="text-[#ab6032f1] ">
-                                <div className="flex justify-center">
-                                    <img src={google} className="h-6 me-2" /> Sign in with Google
-                                </div>
-                            </Link>
-                        </div>
+                        <p className='my-4 text-center'>Already have an account ? <Link to={'/sign-in'} className='text-[#ab6032f1] font-bold'>Sign In</Link></p>
                     </div>
                 </div>
             </div>
@@ -51,4 +51,4 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;
+export default SignUp;
