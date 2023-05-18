@@ -6,7 +6,7 @@ const ToyCard = ({toy}) => {
 
     const [isHovered, setIsHovered] = useState(false);
 
-    console.log(toy);
+    // console.log(toy);
 
     return (
         <div>

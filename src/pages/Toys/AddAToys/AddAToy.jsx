@@ -105,9 +105,8 @@ const AddAToy = () => {
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Details Description</span>
-                            </label>
-                            
-                            <input type="text" placeholder="Details description" className="input input-bordered" {...register("toyPhoto", { required: true })} />
+                            </label>   
+                            <textarea className="input input-bordered" {...register("details")} />
                         </div>
                         {errors.exampleRequired && <span>This field is required</span>}
                         <div className="form-control">
