@@ -1,5 +1,5 @@
-import Gallery from "../../Gallery/Gallery";
-import ShopByCategory from "../../ShopByCategory/ShopByCategory";
+import Gallery from "../Gallery/Gallery";
+import ShopByCategory from "../ShopByCategory/ShopByCategory";
 import Banner from "../Banner/Banner";
 
 

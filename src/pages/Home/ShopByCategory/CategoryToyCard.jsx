@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProvider";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 
 const CategoryToyCard = ({ subCategoryToy }) => {

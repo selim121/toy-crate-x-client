@@ -20,30 +20,30 @@ const MyToyCard = ({ toy, handleDelete }) => {
                     <div className="flex items-center space-x-3">
                         <div className="avatar">
                             <div className="mask mask-squircle w-12 h-12">
-                                <img src={toyPhoto} alt="Avatar Tailwind CSS Component" />
+                                <img src={toyPhoto ? toyPhoto : ''} alt="Avatar Tailwind CSS Component" />
                             </div>
                         </div>
                         <div>
-                            <div className="font-bold">{productName}</div>
-                            <div className="text-sm opacity-50">$ {price}.00</div>
+                            <div className="font-bold">{productName ? productName : ''}</div>
+                            <div className="text-sm opacity-50">$ {price ? price : ''}.00</div>
                         </div>
                     </div>
                 </td>
                 <td className="md:w-2/5">
                     <div className="w-40 overflow-y-scroll">
-                        {details}
+                    {details ? details : ''}
                     </div>
                 </td>
-                <td className="hidden md:table-cell">{subCategory}</td>
-                <td className="hidden md:table-cell">{rating}</td>
-                <td className="hidden md:table-cell">{quantity}</td>
+                <td className="md:w-2/5">{subCategory ? subCategory : ''}</td>
+                <td className="md:w-2/5">{rating ? rating : ''}</td>
+                <td className="md:w-2/5">{quantity ? quantity : ''}</td>
                 <td className="md:w-2/5">
-                    {name}
+                    {name ? name : ''}
                     <br />
-                    <span className="badge badge-ghost badge-sm">{email}</span>
+                    <span className="badge badge-ghost badge-sm">{email ? email : ''}</span>
                 </td>
                 <th className="w-1/5 md:w-auto">
-                    <button className="btn btn-ghost btn-xs hover:text-[#ab6032f1]">Update</button>
+                    <Link  to={`/toy/update/${_id}`} state={{ toy: toy }} className="btn btn-ghost btn-xs hover:text-[#ab6032f1]">Update</Link>
                 </th>
             </tr>
         </>

@@ -8,8 +8,9 @@ import AllToys from "../pages/Toys/AllToys/AllToys";
 import MyToys from "../pages/Toys/MyToys/MyToys";
 import AddAToy from "../pages/Toys/AddAToys/AddAToy";
 import PrivateRoute from "./PrivateRoute";
-import ToyDetails from "../pages/ToyDetails/ToyDetails";
+import ToyDetails from "../pages/Toys/ToyDetails/ToyDetails";
 import Blogs from "../pages/Blogs/Blogs";
+import UpdateToy from "../pages/Toys/UpdateToy/UpdateToy";
 
 const router = createBrowserRouter([
     {
@@ -34,8 +35,7 @@ const router = createBrowserRouter([
         },
         {
             path: 'all-toys',
-            element: <AllToys></AllToys>,
-            loader: () => fetch('https://toy-crate-x-server.vercel.app/allToys')
+            element: <AllToys></AllToys>
         },
         {
             path: 'my-toys',
@@ -51,6 +51,13 @@ const router = createBrowserRouter([
                 <ToyDetails></ToyDetails>
             </PrivateRoute>,
             loader: ({params}) => fetch(`https://toy-crate-x-server.vercel.app/details/${params.id}`)
+        },
+        {
+            path: 'toy/update/:id',
+            element: <PrivateRoute>
+                <UpdateToy></UpdateToy>
+            </PrivateRoute>,
+            loader: ({params}) => fetch(`https://toy-crate-x-server.vercel.app/toy/update/${params.id}`)
         }
       ]
     },
