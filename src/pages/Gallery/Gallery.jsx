@@ -30,7 +30,7 @@ const Gallery = () => {
                 Gallery
             </h1>
             <Slider {...autoSLider1} className='py-12'>
-            <div>
+                <div>
                     <img className='h-52 w-60 rounded-lg shadow-md hover:opacity-50' src="https://i.ibb.co/9yyFJHx/2.jpg" alt="" />
                 </div>
                 <div>
@@ -56,7 +56,7 @@ const Gallery = () => {
                 </div>
             </Slider>
             <Slider {...autoSLider2} className='py-12'>
-            <div>
+                <div>
                     <img className='h-52 w-60 rounded-lg shadow-md hover:opacity-50' src="https://i.ibb.co/9yyFJHx/2.jpg" alt="" />
                 </div>
                 <div>

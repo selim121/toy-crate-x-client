@@ -6,7 +6,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 const CategoryToyCard = ({ subCategoryToy }) => {
     console.log(subCategoryToy);
 
-    const { _id, name, productName, price, quantity, rating, toyPhoto } = subCategoryToy;
+    const { _id, productName, price, rating, toyPhoto } = subCategoryToy;
 
     const [isHovered, setIsHovered] = useState(false);
 

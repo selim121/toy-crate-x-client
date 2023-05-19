@@ -4,90 +4,83 @@ import img1 from '../../../assets/images/banner/slide1.png';
 import img2 from '../../../assets/images/banner/slide2.jpeg';
 import img3 from '../../../assets/images/banner/slide3.jpeg';
 import img4 from '../../../assets/images/banner/slide4.jpeg';
+import Slider from "react-slick";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const Banner = () => {
+
+    const autoSLider = {
+        dots: true,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        speed: 1000,
+        autoplaySpeed: 4000,
+        cssEase: "linear"
+    };
+
     return (
         <>
-            <div>
-                <div className="carousel w-full h-[600px] mt-3">
-                    <div id="slide1" className="carousel-item relative w-full">
-                        <img src={img0} className="w-full rounded-xl" />
-                        <div className="absolute h-1/2 w-full rounded-xl flex items-center justify-center  bottom-0 bg-gradient-to-t from-[#151515] to-[rgba(21, 21, 21, 0)]">
-                        </div>
-                        <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
-                            <a href="#slide5" className="btn btn-circle  hover:bg-[#ce8c8c66] mr-5">❮</a>
-                            <a href="#slide2" className="btn btn-circle  hover:bg-[#ce8c8c66]">❯</a>
-                        </div>
+            <Slider {...autoSLider} className='mt-4'>
+                <div className="relative w-full">
+                    <img src={img0} className="w-full rounded-xl h-96" />
+                    <div className="absolute h-1/2 w-full rounded-xl flex items-center justify-center  bottom-0 bg-gradient-to-t from-[#151515] to-[rgba(21, 21, 21, 0)]">
                     </div>
-                    <div id="slide2" className="carousel-item relative w-full">
-                        <img src={img1} className="w-full rounded-xl" />
-                        <div className="absolute h-1/2 w-full rounded-xl flex items-center justify-center  bottom-0 bg-gradient-to-t from-[#151515] to-[rgba(21, 21, 21, 0)]">
-                            <Link className='font-bold text-2xl text-white rounded-lg border-2 border-[#d2bfbf66] px-8 py-3 bg-[#ce8c8c66]'>View Products</Link>
-                        </div>
-                        <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
-                            <a href="#slide1" className="btn btn-circle  hover:bg-[#ce8c8c66] mr-5">❮</a>
-                            <a href="#slide3" className="btn btn-circle  hover:bg-[#ce8c8c66]">❯</a>
-                        </div>
+                </div>
+                <div className="relative w-full">
+                    <img src={img1} className="w-full rounded-xl h-96" />
+                    <div className="absolute h-1/2 w-full rounded-xl flex items-center justify-center  bottom-0 bg-gradient-to-t from-[#151515] to-[rgba(21, 21, 21, 0)]">
+                        <Link to={'/all-toys'} className='font-bold text-2xl text-white rod2bfbf66] px-8 py-3 bg-[#ab6032f1]'>View Products</Link>
                     </div>
-                    <div id="slide3" className="carousel-item relative w-full">
-                        <img src={img2} className="w-full rounded-xl" />
-                        <div className="absolute h-full rounded-xl flex items-center  left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
-                            <div className='text-white space-y-7 pl-12'>
-                                <h2 className='text-4xl font-bold'>
-                                    Affordable price and best service <br />
-                                    <span>with</span> <br />
-                                    ToyCrateX
-                                </h2>
-                                <div>
-                                    <Link className='font-bold text-2xl text-white rounded-lg border-2 border-[#d2bfbf66] px-8 py-3 bg-[#ce8c8c66]'>View Products</Link>
-                                </div>
+                </div>
+                <div className="relative w-full">
+                    <img src={img2} className="w-full rounded-xl h-96" />
+                    <div className="absolute h-full rounded-xl flex items-center  left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
+                        <div className='text-white space-y-7 pl-12'>
+                            <h2 className='text-4xl font-bold'>
+                                Affordable price and best service <br />
+                                <span>with</span> <br />
+                                ToyCrateX
+                            </h2>
+                            <div>
+                                <Link to={'/all-toys'} className='font-bold text-2xl text-white rounded-lg  px-8 py-3 bg-[#ab6032f1]'>View Products</Link>
                             </div>
-                        </div>
-                        <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
-                            <a href="#slide2" className="btn btn-circle  hover:bg-[#ce8c8c66] mr-5">❮</a>
-                            <a href="#slide4" className="btn btn-circle  hover:bg-[#ce8c8c66]">❯</a>
-                        </div>
-                    </div>
-                    <div id="slide4" className="carousel-item relative w-full">
-                        <img src={img3} className="w-full rounded-xl" />
-                        <div className="absolute h-full w-full rounded-xl flex items-start justify-center  top-0 bg-gradient-to-b from-[#151515] to-[rgba(21, 21, 21, 0)]">
-                            <div className='text-white space-y-7 text-center'>
-                                <h2 className='text-4xl font-bold'>
-                                    Affordable price and best service <br />
-                                    <span>with</span> <br />
-                                    ToyCrateX
-                                </h2>
-                                <div>
-                                    <Link className='font-bold text-2xl text-white rounded-lg border-2 border-[#d2bfbf66] px-8 py-3 bg-[#ce8c8c66]'>View Products</Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
-                            <a href="#slide3" className="btn btn-circle  hover:bg-[#ce8c8c66] mr-5">❮</a>
-                            <a href="#slide5" className="btn btn-circle  hover:bg-[#ce8c8c66]">❯</a>
-                        </div>
-                    </div>
-                    <div id="slide5" className="carousel-item relative w-full">
-                        <img src={img4} className="w-full rounded-xl" />
-                        <div className="absolute h-full rounded-xl flex items-center justify-center  right-0 bg-gradient-to-l from-[#151515] to-[rgba(21, 21, 21, 0)]">
-                            <div className='text-white space-y-7 text-right pe-5'>
-                                <h2 className='text-4xl font-bold'>
-                                    Affordable price and best service <br />
-                                    <span>with</span> <br />
-                                    ToyCrateX
-                                </h2>
-                                <div>
-                                    <Link className='font-bold text-2xl text-white rounded-lg border-2 border-[#d2bfbf66] px-8 py-3 bg-[#ce8c8c66]'>View Products</Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
-                            <a href="#slide4" className="btn btn-circle  hover:bg-[#ce8c8c66] mr-5">❮</a>
-                            <a href="#slide1" className="btn btn-circle  hover:bg-[#ce8c8c66]">❯</a>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div className="relative w-full">
+                    <img src={img3} className="w-full rounded-xl h-96" />
+                    <div className="absolute h-full w-full rounded-xl flex items-start justify-center  top-0 bg-gradient-to-b from-[#151515] to-[rgba(21, 21, 21, 0)]">
+                        <div className='text-white space-y-7 text-center'>
+                            <h2 className='text-4xl font-bold'>
+                                Affordable price and best service <br />
+                                <span>with</span> <br />
+                                ToyCrateX
+                            </h2>
+                            <div>
+                                <Link to={'/all-toys'} className='font-bold text-2xl text-white rounded-lg  px-8 py-3 bg-[#ab6032f1]'>View Products</Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="relative w-full">
+                    <img src={img4} className="w-full rounded-xl h-96" />
+                    <div className="absolute h-full w-full rounded-xl flex items-start justify-center  top-0 bg-gradient-to-b from-[#151515] to-[rgba(21, 21, 21, 0)]">
+                        <div className='text-white space-y-7 text-center pe-5'>
+                            <h2 className='text-4xl font-bold'>
+                                Affordable price and best service <br />
+                                <span>with</span> <br />
+                                ToyCrateX
+                            </h2>
+                            <div>
+                                <Link to={'/all-toys'} className='font-bold text-2xl text-white rounded-lg  px-8 py-3 bg-[#ab6032f1]'>View Products</Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Slider>
         </>
     );
 };
