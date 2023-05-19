@@ -2,9 +2,12 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 
 const UpdateToy = () => {
+
+    useTitle('ToyCrateX - Update Toy')
 
     const { id } = useParams();
     const [profile, setProfile] = useState('');

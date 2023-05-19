@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
 import errorPageImage from '../../assets/error.svg';
+import useTitle from '../hooks/useTitle';
 
 const ErrorPage = () => {
+
+    useTitle('404 - error')
+
     return (
         <div className="text-center">
             <img src={errorPageImage} className="img-fluid mb-4 mx-auto" />

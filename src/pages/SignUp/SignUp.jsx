@@ -4,9 +4,13 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import useTitle from "../hooks/useTitle";
 
 
 const SignUp = () => {
+
+    useTitle('ToyCrateX - SignUp')
+
     const { user, createUser } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');

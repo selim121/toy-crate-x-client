@@ -1,9 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../providers/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 
 const AddAToy = () => {
+
+    useTitle('ToyCrateX - Add Toy')
 
     const {user} = useContext(AuthContext);
     const [profile, setProfile] = useState('');

@@ -1,5 +1,9 @@
+import useTitle from "../hooks/useTitle";
 
 const Blogs = () => {
+
+    useTitle('ToyCrateX - Blogs')
+
     return (
         <>
             <div className="bg-[#e2d5d566] py-12 px-24 space-y-4">

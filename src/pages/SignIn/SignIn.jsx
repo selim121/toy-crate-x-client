@@ -4,9 +4,12 @@ import { Link, Navigate } from "react-router-dom";
 import google from '../../assets/images/icon/google.svg';
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import useTitle from "../hooks/useTitle";
 
 
 const SignIn = () => {
+
+    useTitle('ToyCrateX - SignIn')
 
     const {user, signIn, signInWithGoogle} = useContext(AuthContext);
 
