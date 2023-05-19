@@ -1,6 +1,7 @@
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Typewriter from 'typewriter-effect';
 
 const Gallery = () => {
 
@@ -25,9 +26,17 @@ const Gallery = () => {
     };
 
     return (
-        <div className="bg-[#e2d5d566] pt-12">
+        <div data-aos="slide-up" data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000" className="bg-[#e2d5d566] pt-12" >
             <h1 className="pb-4 text-center text-5xl font-bold text-[#ab6032f1]">
-                Gallery
+                <Typewriter
+                    options={{
+                        strings: ['Gallery'],
+                        autoStart: true,
+                        loop: true,
+                        deleteSpeed: 'natural',
+                    }}
+                />
             </h1>
             <Slider {...autoSLider1} className='py-12'>
                 <div>

@@ -18,6 +18,9 @@ const CategoryToyCard = ({ subCategoryToy }) => {
                 className="bg-white rounded-lg overflow-hidden shadow-md relative"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
+                data-aos="flip-left"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="1000"
             >
                 <img
                     className="w-full h-48 object-cover"

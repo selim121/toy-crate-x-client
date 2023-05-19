@@ -3,6 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { useEffect, useState } from 'react';
 import CategoryToyCard from './CategoryToyCard';
+import Typewriter from 'typewriter-effect';
 
 const ShopByCategory = () => {
 
@@ -23,10 +24,20 @@ const ShopByCategory = () => {
 
 
     return (
-        <div className='py-12 bg-[#e2d5d566]'>
-            <h1 className="pb-4 text-center text-5xl font-bold text-[#ab6032f1]">
-                Shop By Category
-            </h1>
+        <div data-aos="slide-up" data-aos-easing="ease-out-cubic"
+        data-aos-duration="1000" className='py-12 bg-[#e2d5d566]'>
+            <div>
+                <h1 className="pb-4 text-center text-5xl font-bold text-[#ab6032f1]">
+                <Typewriter
+                    options={{
+                        strings: ['Shop By Category'],
+                        autoStart: true,
+                        loop: true,
+                        deleteSpeed: 'natural',
+                    }}
+                />
+                </h1>
+            </div>
 
             <div className="py-12">
                 <Tabs selectedIndex={tabIndex} onSelect={(index) => {

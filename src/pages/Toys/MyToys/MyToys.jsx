@@ -38,7 +38,7 @@ const MyToys = () => {
 
 
     return (
-        <div className="mt-3 overflow-x-auto w-full bg-[#e2d5d566]">
+        <div data-aos="zoom-in-right" data-aos-duration="2000" className="mt-3 overflow-x-auto w-full bg-[#e2d5d566]">
             <table className="table w-full">
                 <thead>
                     <tr>

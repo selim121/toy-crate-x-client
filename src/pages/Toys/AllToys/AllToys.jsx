@@ -30,7 +30,7 @@ const AllToys = () => {
 
 
     return (
-        <div className="py-8 overflow-x-auto w-full bg-[#e2d5d566]">
+        <div data-aos="zoom-in-left" data-aos-duration="2000" className="py-8 overflow-x-auto w-full bg-[#e2d5d566]">
             <div className="py-5 text-center">
                 <input onChange={(e) => setSearchText(e.target.value)} type="text" placeholder="Search Toy by name" className="input input-bordered" />
                 <button onClick={handleSearch} className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md ms-3">Search</button>
