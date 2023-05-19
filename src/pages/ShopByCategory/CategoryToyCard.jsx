@@ -6,7 +6,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 const CategoryToyCard = ({ subCategoryToy }) => {
     console.log(subCategoryToy);
 
-    const { _id, name, productName, price, quantity, subCategory, toyPhoto } = subCategoryToy;
+    const { _id, name, productName, price, quantity, rating, toyPhoto } = subCategoryToy;
 
     const [isHovered, setIsHovered] = useState(false);
 
@@ -26,13 +26,11 @@ const CategoryToyCard = ({ subCategoryToy }) => {
                 />
                 <div className="p-4">
                     <h3 className="font-bold text-black-800 mb-2">{productName}</h3>
-                    <p className="text-gray-600 text-sm mb-2">Sub-category: <span className="text-[#ab6032f1]">{subCategory}</span></p>
                     <p className="text-gray-600 text-sm mb-2">Price: $ <span className="text-[#ab6032f1]">{price}</span></p>
-                    <p className="text-gray-600 text-sm mb-2">Posted by: <span className="text-[#ab6032f1]">{name}</span></p>
+                    <p className="text-gray-600 text-sm mb-2">Rating: <span className="text-[#ab6032f1]">{rating}</span></p>
                     {isHovered && (
-                        <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-90 p-4 flex justify-between items-center">
+                        <div className="absolute bottom-0  w-full bg-white bg-opacity-90 p-4 flex justify-center items-center">
                             <Link to={user?.email ? `/details/${_id}` : '/sign-in'} className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md">View Details</Link>
-                            <p className="text-gray-600 text-sm mb-0">Available quantity: <span className="text-[#ab6032f1]">{quantity}</span></p>
                         </div>
                     )}
                 </div>
