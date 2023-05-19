@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const ToyCard = ({ toy }) => {
 
     const { _id, name, productName, price, quantity, subCategory, toyPhoto } = toy;
 
     const [isHovered, setIsHovered] = useState(false);
+
+    const {user} = useContext(AuthContext);
 
     // console.log(_id);
 
@@ -28,7 +31,7 @@ const ToyCard = ({ toy }) => {
                     <p className="text-gray-600 text-sm mb-2">Posted by: <span className="text-[#ab6032f1]">{name}</span></p>
                     {isHovered && (
                         <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-90 p-4 flex justify-between items-center">
-                            <Link to={`/details/${_id}`} className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md">View Details</Link>
+                            <Link to={user?.email ? `/details/${_id}` : '/sign-in'} className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md">View Details</Link>
                             <p className="text-gray-600 text-sm mb-0">Available quantity: <span className="text-[#ab6032f1]">{quantity}</span></p>
                         </div>
                     )}
