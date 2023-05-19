@@ -16,6 +16,23 @@ const MyToys = () => {
             })
     }, [user?.email])
 
+    const handleDelete = id => {
+        const precede = confirm('Are you sure, you want to delete?');
+        if(precede) {
+            fetch(`https://toy-crate-x-server.vercel.app/toys/${id}`, {
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.deletedCount > 0){
+                    alert('Deleted successfully!');
+                    const remaining = toys.filter(toy => toy._id !== id);
+                    setToys(remaining);
+                }
+            })
+        }
+    }
+
 
     return (
         <div className="mt-3 overflow-x-auto w-full">
@@ -37,6 +54,7 @@ const MyToys = () => {
                         toys.map(toy => <MyToyTable
                             key={toy._id}
                             toy={toy}
+                            handleDelete={handleDelete}
                         ></MyToyTable>)
                     }
                 </tbody>
