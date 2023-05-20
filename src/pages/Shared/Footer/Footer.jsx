@@ -29,7 +29,7 @@ const Footer = () => {
                     <span className="footer-title text-[#ab6032f1]">Company</span>
                     <Link to={'/'} className="link link-hover">Home</Link>
                     <Link to={'/all-toys'} className="link link-hover">All Toys</Link>
-                    <Link to={'/blogs'} className="link link-hover">Blogs</Link>
+                    <Link to={'/blog'} className="link link-hover">Blogs</Link>
                     <Link to={'/'} className="link link-hover">Gallery</Link>
                 </div>
                 <div className='space-y-2'>
