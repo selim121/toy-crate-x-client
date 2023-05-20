@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const MyToys = () => {
 
+
     useTitle('ToyCrateX - My Toys')
 
     const { user } = useContext(AuthContext);
@@ -21,20 +22,20 @@ const MyToys = () => {
     }, [user?.email])
 
     const handleSorting = (index) => {
-        if(index === 0) {
+        if (index === 0) {
             fetch(`https://toy-crate-x-server.vercel.app/my-toys/${user?.email}/ascending`)
-            .then(res => res.json())
-            .then(data => {
-                setToys(data);
-            });
+                .then(res => res.json())
+                .then(data => {
+                    setToys(data);
+                });
         } else if (index === 1) {
             fetch(`https://toy-crate-x-server.vercel.app/my-toys/${user?.email}/descending`)
-            .then(res => res.json())
-            .then(data => {
-                setToys(data);
-            });
+                .then(res => res.json())
+                .then(data => {
+                    setToys(data);
+                });
         }
-        
+
     }
 
     const handleDelete = id => {
@@ -53,6 +54,8 @@ const MyToys = () => {
                 })
         }
     }
+
+
 
 
     return (
@@ -90,6 +93,8 @@ const MyToys = () => {
                     }
                 </tbody>
             </table>
+            
+            
         </div>
     );
 };

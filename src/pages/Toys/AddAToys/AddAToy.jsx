@@ -30,7 +30,7 @@ const AddAToy = () => {
         name: profile.name,
         email: profile.email
     }});
-    const onSubmit = data => {
+    const onSubmit = (data,e) => {
         fetch('https://toy-crate-x-server.vercel.app/toys', {
                     method: 'POST',
                     headers: {
@@ -42,9 +42,14 @@ const AddAToy = () => {
                     .then(toy => {
                         if (toy.insertedId) {
                             alert('Toy added successfully');
-                            // form.reset();
+                            e.target.reset();
                         }
                     })
+                    .catch (error => {
+                        console.log(error());
+                        
+                    })
+        
     };
 
     return (
