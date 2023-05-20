@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -9,7 +9,25 @@ const ToyCard = ({ toy }) => {
 
     const { user } = useContext(AuthContext);
 
-    // console.log(_id);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+
+    const handleViewDetailsClick = () => {
+        if (!user?.email){
+            localStorage.setItem("redirectTo", `${location.href}`);
+            console.log(localStorage.getItem("redirectTo"));
+            Swal.fire({
+                title: 'Error!',
+                text: 'You have to log in first.',
+                icon: 'error',
+                confirmButtonText: 'Login Now',
+            });
+            navigate("/sign-in");
+        }else {
+            navigate(`/details/${_id}`);
+        }
+    };
 
     return (
         <>
@@ -26,18 +44,12 @@ const ToyCard = ({ toy }) => {
                     {name ? name : ''}
                 </td>
                 <th className="w-1/5 md:w-auto">
-                    <Link to={user?.email ? `/details/${_id}` : '/sign-in'}
-                        onClick={() => {
-                            if (!user?.email) {
-                                Swal.fire({
-                                    title: 'Error!',
-                                    text: 'You have to log in first.',
-                                    icon: 'error',
-                                    confirmButtonText: 'Login Now',
-                                });
-                            }
-                        }}
-                        className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md">View Details</Link>
+                    <button
+                        onClick={handleViewDetailsClick}
+                        className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md"
+                    >
+                        View Details
+                    </button>
                 </th>
             </tr>
         </>

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useForm } from "react-hook-form";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import google from '../../assets/images/icon/google.svg';
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -10,6 +10,18 @@ import Swal from "sweetalert2";
 
 
 const SignIn = () => {
+
+    const navigate = useNavigate();
+
+    const userRedirect = () => {
+        const redirectTo = localStorage.getItem("redirectTo");
+        if (redirectTo) {
+            localStorage.removeItem("redirectTo");
+            navigate(redirectTo);
+        }else {
+            navigate('/');
+        }
+    };
 
     useTitle('ToyCrateX - SignIn')
 
@@ -25,6 +37,7 @@ const SignIn = () => {
                 icon: 'Success',
                 confirmButtonText: 'Cool'
               })
+              userRedirect();
               e.target.reset();
         })
         .catch(() => {
@@ -43,6 +56,7 @@ const SignIn = () => {
         signInWithGoogle()
         .then(result => {})
         .catch(() => {
+            userRedirect();
             Swal.fire({
                 title: 'Error!',
                 text: 'Something is wrong.',
@@ -52,11 +66,13 @@ const SignIn = () => {
         })
     }
 
-    if(user?.email) {
-        return <>
-            <Navigate to={'/'} replace></Navigate>
-        </>
-    }
+    
+
+    // if(user?.email) {
+    //     return <>
+    //         <Navigate to={'/'} replace></Navigate>
+    //     </>
+    // }
 
     return (
         <div className="bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1530325553241-4f6e7690cf36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dG95fGVufDB8fDB8fA%3D%3D&w=1000&q=80')" }}>

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useTitle from "../../hooks/useTitle";
 import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -12,6 +13,7 @@ const AddAToy = () => {
 
     const {user} = useContext(AuthContext);
     const [profile, setProfile] = useState('');
+    const navigate = useNavigate();
 
     
     useEffect(() => {
@@ -49,7 +51,7 @@ const AddAToy = () => {
                                 icon: 'Success',
                                 confirmButtonText: 'Ok'
                               })
-                              
+                              navigate('/my-toys');
                             e.target.reset();
                         }
                     })

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
@@ -8,6 +8,7 @@ const UpdateToy = () => {
 
     const toy = useLoaderData();
     const { _id, name, email, productName, details, price, quantity, rating, subCategory, toyPhoto } = toy;
+    const navigate = useNavigate();
 
 
     const { register, handleSubmit, formState: { errors } } = useForm({values: {
@@ -39,6 +40,7 @@ const UpdateToy = () => {
                                 icon: 'Success',
                                 confirmButtonText: 'Ok'
                               })
+                              navigate('/my-toys');
                             e.target.reset();
                         }
                     })
