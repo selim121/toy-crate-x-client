@@ -10,7 +10,7 @@ const CustomerReview = () => {
             <h1 className="mb-12 py-4 text-center text-5xl font-bold text-[#ab6032f1]">
                 <Typewriter
                     options={{
-                        strings: ['Customer Review'],
+                        strings: ['Toy Reviews and Recommendations'],
                         autoStart: true,
                         loop: true,
                         deleteSpeed: 'natural',

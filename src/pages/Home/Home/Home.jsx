@@ -3,6 +3,7 @@ import ShopByCategory from "../ShopByCategory/ShopByCategory";
 import Banner from "../Banner/Banner";
 import useTitle from "../../hooks/useTitle";
 import CustomerReview from "../../CustomerReview/CustomerReview";
+import FAQSection from "../../FAQSection/FAQSection";
 
 
 
@@ -16,6 +17,7 @@ const Home = () => {
             <ShopByCategory></ShopByCategory>
             <Gallery></Gallery>
             <CustomerReview></CustomerReview>
+            <FAQSection></FAQSection>
         </>
     );
 };
