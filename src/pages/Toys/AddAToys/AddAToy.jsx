@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useTitle from "../../hooks/useTitle";
+import Swal from 'sweetalert2';
+
 
 
 const AddAToy = () => {
@@ -41,12 +43,23 @@ const AddAToy = () => {
                     .then(res => res.json())
                     .then(toy => {
                         if (toy.insertedId) {
-                            alert('Toy added successfully');
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Toy Added Successfully',
+                                icon: 'Success',
+                                confirmButtonText: 'Ok'
+                              })
+                              
                             e.target.reset();
                         }
                     })
-                    .catch (error => {
-                        console.log(error());
+                    .catch (() => {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Something is wrong.',
+                            icon: 'error',
+                            confirmButtonText: 'Try again'
+                          })
                         
                     })
         

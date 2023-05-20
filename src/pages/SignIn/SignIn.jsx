@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useForm } from "react-hook-form";
 import { Link, Navigate } from "react-router-dom";
@@ -5,6 +6,7 @@ import google from '../../assets/images/icon/google.svg';
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import useTitle from "../hooks/useTitle";
+import Swal from "sweetalert2";
 
 
 const SignIn = () => {
@@ -20,13 +22,27 @@ const SignIn = () => {
     }
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => {
+    const onSubmit = (data,e) => {
         signIn(data.email, data.password)
         .then(result => {
             const user = result.user;
-            console.log(user);
+            Swal.fire({
+                title: 'Success!',
+                text: 'Successfully Log In',
+                icon: 'Success',
+                confirmButtonText: 'Cool'
+              })
+              e.target.reset();
         })
-        .catch(error => console.log(error))
+        .catch(() => {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Your email or password is not correct.',
+                icon: 'error',
+                confirmButtonText: 'Try again'
+              })
+              
+        })
     };
 
 
@@ -36,8 +52,13 @@ const SignIn = () => {
             const user = result.user;
             console.log(user);
         })
-        .catch(error => {
-            console.log('error', error.message);
+        .catch(() => {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Something is wrong.',
+                icon: 'error',
+                confirmButtonText: 'Try again'
+              })
         })
     }
 

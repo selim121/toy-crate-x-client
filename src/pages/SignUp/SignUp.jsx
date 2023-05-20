@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import useTitle from "../hooks/useTitle";
+import Swal from "sweetalert2";
 
 
 const SignUp = () => {
@@ -12,18 +13,13 @@ const SignUp = () => {
     useTitle('ToyCrateX - SignUp')
 
     const { user, createUser } = useContext(AuthContext);
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
 
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => {
-        setSuccess('');
+    const onSubmit = (data,e) => {
         
         createUser(data.email, data.password)
             .then(result => {
-                setError('');
-                setSuccess('User has been created successfully.')
                 const user = result.user;
                 console.log(user);
                 fetch('https://toy-crate-x-server.vercel.app/users', {
@@ -35,18 +31,35 @@ const SignUp = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
                         if (data.insertedId) {
-                            alert('Users added successfully');
-                            // form.reset();
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Successfully Sign Up',
+                                icon: 'Success',
+                                confirmButtonText: 'Ok'
+                              })
+                              e.target.reset();
                         }
+                    })
+                    .catch(() => {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Something is wrong.',
+                            icon: 'error',
+                            confirmButtonText: 'Try again'
+                          })
                     })
 
                 
 
             })
-            .catch(error => {
-                setError('Something wrong, try again.');
+            .catch(() => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Something is wrong.',
+                    icon: 'error',
+                    confirmButtonText: 'Try again'
+                  })
             })
     };
 
@@ -87,10 +100,6 @@ const SignUp = () => {
                             </div>
                         </form>
                         <p className='my-4 text-center'>Already have an account ? <Link to={'/sign-in'} className='text-[#ab6032f1] font-bold'>Sign In</Link></p>
-                        <div className="mt-2 text-center">
-                            <p className="text-red-700 my-2">{error}</p>
-                            <p className="text-green-700 my-2">{success}</p>
-                        </div>
                     </div>
                 </div>
             </div>

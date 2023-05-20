@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const UpdateToy = () => {
@@ -32,7 +33,12 @@ const UpdateToy = () => {
                     .then(res => res.json())
                     .then(data => {
                         if (data.modifiedCount > 0) {
-                            alert('Toy update successfully');
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Toy Update Successfully',
+                                icon: 'Success',
+                                confirmButtonText: 'Ok'
+                              })
                             e.target.reset();
                         }
                     })

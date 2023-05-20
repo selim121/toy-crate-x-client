@@ -3,6 +3,7 @@ import { AuthContext } from "../../../providers/AuthProvider";
 import MyToyTable from "./MyToyTable";
 import useTitle from "../../hooks/useTitle";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const MyToys = () => {
@@ -39,20 +40,53 @@ const MyToys = () => {
     }
 
     const handleDelete = id => {
-        const precede = confirm('Are you sure, you want to delete?');
-        if (precede) {
-            fetch(`https://toy-crate-x-server.vercel.app/toys/${id}`, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        alert('Deleted successfully!');
-                        const remaining = toys.filter(toy => toy._id !== id);
-                        setToys(remaining);
-                    }
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://toy-crate-x-server.vercel.app/toys/${id}`, {
+                    method: 'DELETE'
                 })
-        }
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            swalWithBootstrapButtons.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            const remaining = toys.filter(toy => toy._id !== id);
+                            setToys(remaining);
+                        }
+                    })
+
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your imaginary file is safe :)',
+                    'error'
+                )
+            }
+        })
+
     }
 
 
@@ -93,8 +127,8 @@ const MyToys = () => {
                     }
                 </tbody>
             </table>
-            
-            
+
+
         </div>
     );
 };
