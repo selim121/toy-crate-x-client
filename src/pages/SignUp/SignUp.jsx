@@ -20,8 +20,6 @@ const SignUp = () => {
         
         createUser(data.email, data.password)
             .then(result => {
-                const user = result.user;
-                console.log(user);
                 fetch('https://toy-crate-x-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
@@ -62,6 +60,12 @@ const SignUp = () => {
                   })
             })
     };
+
+    if(user?.email) {
+        return <>
+            <Navigate to={'/'} replace></Navigate>
+        </>
+    }
 
 
     return (

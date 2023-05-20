@@ -15,17 +15,10 @@ const SignIn = () => {
 
     const {user, signIn, signInWithGoogle} = useContext(AuthContext);
 
-    if(user?.email) {
-        return <>
-            <Navigate to={'/'} replace></Navigate>
-        </>
-    }
-
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data,e) => {
         signIn(data.email, data.password)
         .then(result => {
-            const user = result.user;
             Swal.fire({
                 title: 'Success!',
                 text: 'Successfully Log In',
@@ -48,10 +41,7 @@ const SignIn = () => {
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-        })
+        .then(result => {})
         .catch(() => {
             Swal.fire({
                 title: 'Error!',
@@ -60,6 +50,12 @@ const SignIn = () => {
                 confirmButtonText: 'Try again'
               })
         })
+    }
+
+    if(user?.email) {
+        return <>
+            <Navigate to={'/'} replace></Navigate>
+        </>
     }
 
     return (

@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const CategoryToyCard = ({ subCategoryToy }) => {
-    console.log(subCategoryToy);
 
     const { _id, productName, price, rating, toyPhoto } = subCategoryToy;
 
@@ -33,7 +33,19 @@ const CategoryToyCard = ({ subCategoryToy }) => {
                     <p className="text-gray-600 text-sm mb-2">Rating: <span className="text-[#ab6032f1]">{rating}</span></p>
                     {isHovered && (
                         <div className="absolute bottom-0  w-full bg-white bg-opacity-90 p-4 flex justify-center items-center">
-                            <Link to={user?.email ? `/details/${_id}` : '/sign-in'} className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md">View Details</Link>
+                            <Link 
+                                to={user?.email ? `/details/${_id}` : '/sign-in'}
+                                onClick={() => {
+                                  if (!user?.email) {
+                                    Swal.fire({
+                                      title: 'Error!',
+                                      text: 'You have to log in first.',
+                                      icon: 'error',
+                                      confirmButtonText: 'Login Now',
+                                    });
+                                  }
+                                }}
+                            className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md">View Details</Link>
                         </div>
                     )}
                 </div>

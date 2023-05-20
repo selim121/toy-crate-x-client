@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const ToyCard = ({ toy }) => {
 
@@ -14,10 +15,10 @@ const ToyCard = ({ toy }) => {
         <>
             <tr>
                 <td className="md:w-1/5 font-bold">
-                {productName ? productName : ''}
+                    {productName ? productName : ''}
                 </td>
                 <td className="md:w-1/5">
-                {price ? price : ''}
+                    {price ? price : ''}
                 </td>
                 <td className="md:w-1/5">{subCategory ? subCategory : ''}</td>
                 <td className="md:w-1/5">{quantity ? quantity : ''}</td>
@@ -25,7 +26,18 @@ const ToyCard = ({ toy }) => {
                     {name ? name : ''}
                 </td>
                 <th className="w-1/5 md:w-auto">
-                <Link to={user?.email ? `/details/${_id}` : '/sign-in'} className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md">View Details</Link>
+                    <Link to={user?.email ? `/details/${_id}` : '/sign-in'}
+                        onClick={() => {
+                            if (!user?.email) {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'You have to log in first.',
+                                    icon: 'error',
+                                    confirmButtonText: 'Login Now',
+                                });
+                            }
+                        }}
+                        className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md">View Details</Link>
                 </th>
             </tr>
         </>
