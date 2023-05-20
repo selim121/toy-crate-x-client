@@ -56,7 +56,8 @@ const router = createBrowserRouter([
             path: 'toy/update/:id',
             element: <PrivateRoute>
                 <UpdateToy></UpdateToy>
-            </PrivateRoute>
+            </PrivateRoute>,
+            loader: ({params}) => fetch(`https://toy-crate-x-server.vercel.app/toy/update/${params.id}`)
         }
       ]
     },

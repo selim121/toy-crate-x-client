@@ -1,44 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
 
-import UpdateToy from "../UpdateToy/UpdateToy";
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
-
-
 
 const MyToyTable = ({ toy, handleDelete }) => {
 
     const { _id, name, email, productName, details, price, quantity, rating, subCategory, toyPhoto } = toy;
-    const [product, setProduct] = useState([]);
-    const history = useHistory();
-
-    const handleEdit = () => {
-        fetch(`https://toy-crate-x-server.vercel.app/toy/update/${_id}`)
-            .then(res => res.json())
-            .then(data => {
-                setProduct(data);
-                history.push({
-                    pathname: `/toy/update/${_id}`,
-                    state: { product: data },
-                  });
-            })
-    }
-    // console.log(product);
-
-    // const handleUpdate = id => {
-    //     // console.log(data, profile._id);
-    //     // fetch(`https://toy-crate-x-server.vercel.app/toy/update/${profile._id}`, {
-    //     //     method: 'PUT',
-    //     //     headers: {'Content-Type': 'application/json'},
-    //     //     body: JSON.stringify(data),
-    //     // })
-    //     //     .then(res => res.json())
-    //     //     .then(result => {
-    //     //         console.log(result);
-    //     //     })
-    // }
-    // console.log(profile);
+    
 
     return (
         <>
@@ -75,16 +42,9 @@ const MyToyTable = ({ toy, handleDelete }) => {
                     <span className="badge badge-ghost badge-sm">{email ? email : ''}</span>
                 </td>
                 <td className="w-1/5 md:w-auto">
-                    <label onClick={handleEdit} className="btn btn-ghost btn-xs text-[#ab6032f1]">Edit</label>
-                    {/* <label onClick={handleEdit} htmlFor="my-modal-3" className="btn btn-ghost btn-xs text-[#ab6032f1]">Edit</label> */}
-                    {/* <Link to={{
-                        pathname: `/toy/update/${product._id}`,
-                        state: { product }
-                    }}>Update</Link> */}
-                    {/* <UpdateToy
-                        key={product._id}
-                        product={product}
-                    ></UpdateToy> */}
+                    
+                    <Link to={`/toy/update/${_id}`} className="btn btn-ghost btn-xs text-[#ab6032f1]">Edit</Link>
+                    
                 </td>
 
             </tr>
