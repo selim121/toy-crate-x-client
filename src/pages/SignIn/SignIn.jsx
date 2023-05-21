@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useForm } from "react-hook-form";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import google from '../../assets/images/icon/google.svg';
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -12,32 +12,26 @@ import Swal from "sweetalert2";
 const SignIn = () => {
 
     const navigate = useNavigate();
+    const location = useLocation();
 
-    const userRedirect = () => {
-        const redirectTo = localStorage.getItem("redirectTo");
-        if (redirectTo) {
-            localStorage.removeItem("redirectTo");
-            navigate(redirectTo);
-        }else {
-            navigate('/');
-        }
-    };
+    const from = location.state?.from?.pathname || '/';
+
 
     useTitle('ToyCrateX - SignIn')
 
-    const {user, signIn, signInWithGoogle} = useContext(AuthContext);
+    const { signIn, signInWithGoogle} = useContext(AuthContext);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data,e) => {
         signIn(data.email, data.password)
         .then(result => {
+            navigate(from, {replace: true});
             Swal.fire({
                 title: 'Success!',
                 text: 'Successfully Log In',
                 icon: 'Success',
                 confirmButtonText: 'Cool'
               })
-              userRedirect();
               e.target.reset();
         })
         .catch(() => {
@@ -54,9 +48,16 @@ const SignIn = () => {
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
-        .then(result => {})
+        .then(result => {
+            navigate(from, {replace: true});
+            Swal.fire({
+                title: 'Success!',
+                text: 'Successfully Log In',
+                icon: 'Success',
+                confirmButtonText: 'Cool'
+              })
+        })
         .catch(() => {
-            userRedirect();
             Swal.fire({
                 title: 'Error!',
                 text: 'Something is wrong.',
@@ -67,12 +68,6 @@ const SignIn = () => {
     }
 
     
-
-    // if(user?.email) {
-    //     return <>
-    //         <Navigate to={'/'} replace></Navigate>
-    //     </>
-    // }
 
     return (
         <div className="bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1530325553241-4f6e7690cf36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dG95fGVufDB8fDB8fA%3D%3D&w=1000&q=80')" }}>

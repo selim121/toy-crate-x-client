@@ -1,8 +1,7 @@
 import { useContext, useState } from "react";
-import {useNavigate } from "react-router-dom";
+import {Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
-import { useLocation } from "react-router-dom";
 
 
 const CategoryToyCard = ({ subCategoryToy }) => {
@@ -11,27 +10,10 @@ const CategoryToyCard = ({ subCategoryToy }) => {
 
     const [isHovered, setIsHovered] = useState(false);
 
-    const { user } = useContext(AuthContext);
-
-    const navigate = useNavigate();
-    const location = useLocation();
+    const {user} = useContext(AuthContext);
 
 
-    const handleViewDetailsClick = () => {
-        if (!user?.email){
-            localStorage.setItem("redirectTo", `${location.href}`);
-            console.log(localStorage.getItem("redirectTo"));
-            Swal.fire({
-                title: 'Error!',
-                text: 'You have to log in first.',
-                icon: 'error',
-                confirmButtonText: 'Login Now',
-            });
-            navigate("/sign-in");
-        }else {
-            navigate(`/details/${_id}`);
-        }
-    };
+   
 
 
     return (
@@ -56,12 +38,17 @@ const CategoryToyCard = ({ subCategoryToy }) => {
                     {isHovered && (
                         <div className="absolute bottom-0  w-full bg-white bg-opacity-90 p-4 flex justify-center items-center">
                             
-                            <button
-                                onClick={handleViewDetailsClick}
-                                className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md"
-                            >
-                                View Details
-                            </button>
+                            <Link to={`/details/${_id}`}
+                        onClick={() => {
+                            if (!user?.email) {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Something is wrong.',
+                                    icon: 'error',
+                                    confirmButtonText: 'Try again',
+                                });
+                            }
+                        }} className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md" >View Details</Link>
                         </div>
                     )}
                 </div>
