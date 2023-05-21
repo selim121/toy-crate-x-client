@@ -100,10 +100,10 @@ const SignUp = () => {
                             </div>
                             {errors.exampleRequired && <span>This field is required</span>}
                             <div className="form-control mt-6">
-                                <input className="btn border-0 bg-[#ab6032f1]" type="submit" value="Sign Up" />
+                                <input className="btn border-0 bg-[#612500f1]" type="submit" value="Sign Up" />
                             </div>
                         </form>
-                        <p className='my-4 text-center'>Already have an account ? <Link to={'/sign-in'} className='text-[#ab6032f1] font-bold'>Sign In</Link></p>
+                        <p className='my-4 text-center'>Already have an account ? <Link to={'/sign-in'} className='text-[#612500f1] font-bold'>Sign In</Link></p>
                     </div>
                 </div>
             </div>

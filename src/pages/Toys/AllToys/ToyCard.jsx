@@ -35,7 +35,7 @@ const ToyCard = ({ toy }) => {
                                     confirmButtonText: 'Try again',
                                 });
                             }
-                        }} className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md" >View Details</Link>
+                        }} className="bg-[#612500f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md" >View Details</Link>
                 </th>
             </tr>
         </>

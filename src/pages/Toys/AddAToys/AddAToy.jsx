@@ -136,7 +136,7 @@ const AddAToy = () => {
                         </div>
                         {errors.exampleRequired && <span>This field is required</span>}
                         <div className="form-control">
-                            <input className="btn border-0 mt-2 bg-[#ab6032f1]" type="submit" value="Add Toy" />
+                            <input className="btn border-0 mt-2 bg-[#612500f1]" type="submit" value="Add Toy" />
                         </div>
                     </form>
                 </div>

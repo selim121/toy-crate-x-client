@@ -28,7 +28,7 @@ const Gallery = () => {
     return (
         <div data-aos="slide-up" data-aos-easing="ease-out-cubic"
             data-aos-duration="1000" className="bg-[#e2d5d566] pt-12" >
-            <h1 className="pb-4 text-center text-5xl font-bold text-[#ab6032f1]">
+            <h1 className="pb-4 text-center text-5xl font-bold text-[#612500f1]">
                 <Typewriter
                     options={{
                         strings: ['Gallery'],

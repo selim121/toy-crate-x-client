@@ -27,7 +27,7 @@ const ShopByCategory = () => {
         <div data-aos="slide-up" data-aos-easing="ease-out-cubic"
         data-aos-duration="1000" className='py-12 bg-[#e2d5d566]'>
             <div>
-                <h1 className="pb-4 text-center text-5xl font-bold text-[#ab6032f1]">
+                <h1 className="pb-4 text-center text-5xl font-bold text-[#612500f1]">
                 <Typewriter
                     options={{
                         strings: ['Shop By Category'],
@@ -45,10 +45,10 @@ const ShopByCategory = () => {
                     setSubCategory(category[index]);
                 }}>
                     <TabList>
-                        <Tab><span className='font-bold text-[#ab6032f1]'>Regular Car</span></Tab>
-                        <Tab><span className='font-bold text-[#ab6032f1]'>Police Car</span></Tab>
-                        <Tab><span className='font-bold text-[#ab6032f1]'>Jeep</span></Tab>
-                        <Tab><span className='font-bold text-[#ab6032f1]'>Sports Car</span></Tab>
+                        <Tab><span className='font-bold text-[#612500f1]'>Regular Car</span></Tab>
+                        <Tab><span className='font-bold text-[#612500f1]'>Police Car</span></Tab>
+                        <Tab><span className='font-bold text-[#612500f1]'>Jeep</span></Tab>
+                        <Tab><span className='font-bold text-[#612500f1]'>Sports Car</span></Tab>
                     </TabList>
 
                     <TabPanel>

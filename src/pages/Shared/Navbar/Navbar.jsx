@@ -13,15 +13,15 @@ const Navbar = () => {
     // console.log(user);
 
     const navItems = <>
-        <li><Link to={'/'} className="hover:text-[#ab6032f1]">Home</Link></li>
-        <li><Link to={'/all-toys'} className="hover:text-[#ab6032f1]">All Toys</Link></li>
+        <li><Link to={'/'} className="hover:text-[#612500f1]">Home</Link></li>
+        <li><Link to={'/all-toys'} className="hover:text-[#612500f1]">All Toys</Link></li>
         {
-            user?.email && <li><Link to={'/my-toys'} className="hover:text-[#ab6032f1]">My Toys</Link></li>
+            user?.email && <li><Link to={'/my-toys'} className="hover:text-[#612500f1]">My Toys</Link></li>
         }
         {
-            user?.email && <li><Link to={'/add-a-toy'} className="hover:text-[#ab6032f1]">Add A Toy</Link></li>
+            user?.email && <li><Link to={'/add-a-toy'} className="hover:text-[#612500f1]">Add A Toy</Link></li>
         }
-        <li><Link to={'/blog'} className="hover:text-[#ab6032f1]">Blogs</Link></li>
+        <li><Link to={'/blog'} className="hover:text-[#612500f1]">Blogs</Link></li>
     </>
 
 
@@ -84,7 +84,7 @@ const Navbar = () => {
                                     <img className='h-8 w-8 rounded-full' src={profile?.photo && profile.photo || user?.photoURL && user.photoURL} alt="" />
                                 </div>
                             </div>
-                            <p className="absolute top-20 text-[#ab6032f1] profile-name hidden">{profile?.name && profile.name || user?.displayName && user.displayName}</p>
+                            <p className="absolute top-20 text-[#612500f1] profile-name hidden">{profile?.name && profile.name || user?.displayName && user.displayName}</p>
                             <Link onClick={handleSignOut} className='ms-4 font-bold rounded-lg bg-white border-2 border-[#d2bfbf66] px-4 py-2 transition duration-300 ease-in-out hover:bg-[#ce8c8c66]' to={'sign-in'}>Sign Out</Link>
                         </>
                             :

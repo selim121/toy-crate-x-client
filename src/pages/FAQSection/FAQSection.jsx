@@ -39,7 +39,7 @@ const FAQSection = () => {
   return (
     <section className="bg-[#e2d5d566]">
       <div className="max-w-3xl mx-auto px-4 py-12">
-        <h1 className="pb-12 text-center text-5xl font-bold text-[#ab6032f1]">
+        <h1 className="pb-12 text-center text-5xl font-bold text-[#612500f1]">
           <Typewriter
             options={{
               strings: ['Frequently Asked Questions'],

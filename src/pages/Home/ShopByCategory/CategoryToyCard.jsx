@@ -33,8 +33,8 @@ const CategoryToyCard = ({ subCategoryToy }) => {
                 />
                 <div className="p-4">
                     <h3 className="font-bold text-black-800 mb-2">{productName}</h3>
-                    <p className="text-gray-600 text-sm mb-2">Price: $ <span className="text-[#ab6032f1]">{price}</span></p>
-                    <p className="text-gray-600 text-sm mb-2">Rating: <span className="text-[#ab6032f1]">{rating}</span></p>
+                    <p className="text-gray-600 text-sm mb-2">Price: $ <span className="text-[#612500f1]">{price}</span></p>
+                    <p className="text-gray-600 text-sm mb-2">Rating: <span className="text-[#612500f1]">{rating}</span></p>
                     {isHovered && (
                         <div className="absolute bottom-0  w-full bg-white bg-opacity-90 p-4 flex justify-center items-center">
                             
@@ -48,7 +48,7 @@ const CategoryToyCard = ({ subCategoryToy }) => {
                                     confirmButtonText: 'Try again',
                                 });
                             }
-                        }} className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md" >View Details</Link>
+                        }} className="bg-[#612500f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md" >View Details</Link>
                         </div>
                     )}
                 </div>

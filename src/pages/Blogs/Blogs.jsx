@@ -9,7 +9,7 @@ const Blogs = () => {
             <div className="bg-[#e2d5d566] py-12 px-24 space-y-4">
 
                 <div data-aos="fade-up" data-aos-duration="1000">
-                    <h1 className="text-3xl font-bold">(i) <span className="text-[#ab6032f1]">What is an access token and refresh token?</span></h1>
+                    <h1 className="text-3xl font-bold">(i) <span className="text-[#612500f1]">What is an access token and refresh token?</span></h1>
                     <div className="px-5 space-y-2">
                         <p className="text-justify">
                             An access token and refresh token are commonly used in authentication systems to manage user sessions and provide secure access to protected resources. Here an overview of what they are and how they work:
@@ -26,7 +26,7 @@ const Blogs = () => {
                 </div>
 
                 <div data-aos="fade-up" data-aos-duration="3000">
-                    <h1 className="text-3xl font-bold">(ii) <span className="text-[#ab6032f1]">How do they work and where should we store them on the client-side?</span></h1>
+                    <h1 className="text-3xl font-bold">(ii) <span className="text-[#612500f1]">How do they work and where should we store them on the client-side?</span></h1>
                     <div className="px-5 space-y-2">
                         <p className="font-semibold">
                             The general flow of using access and refresh tokens is as follows:
@@ -53,7 +53,7 @@ const Blogs = () => {
 
 
                 <div data-aos="fade-up" data-aos-duration="3000">
-                    <h1 className="text-3xl font-bold">(iii) <span className="text-[#ab6032f1]">Compare SQL and NoSQL databases?</span></h1>
+                    <h1 className="text-3xl font-bold">(iii) <span className="text-[#612500f1]">Compare SQL and NoSQL databases?</span></h1>
                     <table className="min-w-full bg-white border border-gray-300">
                         <thead>
                             <tr>
@@ -93,7 +93,7 @@ const Blogs = () => {
                 </div>
 
                 <div data-aos="fade-up" data-aos-duration="3000">
-                    <h1 className="text-3xl font-bold">(iv) <span className="text-[#ab6032f1]">What is express js? What is Nest JS?</span></h1>
+                    <h1 className="text-3xl font-bold">(iv) <span className="text-[#612500f1]">What is express js? What is Nest JS?</span></h1>
                     <h2 className="mb-2 font-bold">Express.js:</h2>
                     <ul className="list-disc ml-6 mb-4">
                         <li>Minimalist web framework for Node.js</li>
@@ -115,7 +115,7 @@ const Blogs = () => {
 
 
                 <div data-aos="fade-up" data-aos-duration="3000">
-                    <h1 className="text-3xl font-bold">(v) <span className="text-[#ab6032f1]">What is MongoDB aggregate and how does it work?</span></h1>
+                    <h1 className="text-3xl font-bold">(v) <span className="text-[#612500f1]">What is MongoDB aggregate and how does it work?</span></h1>
                     <h2 className="font-semibold">MongoDB Aggregate: Data Processing and Analysis</h2>
                     <p className="mb-4 text-justify">
                         MongoDBs aggregate framework is a powerful feature that allows for advanced data processing and analysis within the database. With aggregate, you can perform complex operations such as data transformations, aggregations, and computations directly on MongoDB collections. The framework works by applying a series of stages to the input documents, allowing for flexible data manipulation. Each stage in the pipeline performs a specific operation, such as filtering, grouping, sorting, or computing. These stages can be chained together to create a comprehensive data transformation pipeline. The result is the output of the last stage, which can be modified documents, aggregated values, or computed statistics. The aggregation framework is widely used for efficient and scalable data analysis in MongoDB applications.

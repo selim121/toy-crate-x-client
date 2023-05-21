@@ -32,7 +32,7 @@ const Banner = () => {
                 <div className="relative w-full">
                     <img src={img1} className="w-full rounded-xl h-96" />
                     <div className="absolute h-1/2 w-full rounded-xl flex items-center justify-center  bottom-0 bg-gradient-to-t from-[#151515] to-[rgba(21, 21, 21, 0)]">
-                        <Link to={'/all-toys'} className='font-bold text-2xl text-white rod2bfbf66] px-8 py-3 bg-[#ab6032f1]'>View Products</Link>
+                        <Link to={'/all-toys'} className='font-bold text-2xl text-white rod2bfbf66] px-8 py-3 bg-[#612500f1]'>View Products</Link>
                     </div>
                 </div>
                 <div className="relative w-full">
@@ -45,7 +45,7 @@ const Banner = () => {
                                 ToyCrateX
                             </h2>
                             <div>
-                                <Link to={'/all-toys'} className='font-bold text-2xl text-white rounded-lg  px-8 py-3 bg-[#ab6032f1]'>View Products</Link>
+                                <Link to={'/all-toys'} className='font-bold text-2xl text-white rounded-lg  px-8 py-3 bg-[#612500f1]'>View Products</Link>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@ const Banner = () => {
                                 ToyCrateX
                             </h2>
                             <div>
-                                <Link to={'/all-toys'} className='font-bold text-2xl text-white rounded-lg  px-8 py-3 bg-[#ab6032f1]'>View Products</Link>
+                                <Link to={'/all-toys'} className='font-bold text-2xl text-white rounded-lg  px-8 py-3 bg-[#612500f1]'>View Products</Link>
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@ const Banner = () => {
                                 ToyCrateX
                             </h2>
                             <div>
-                                <Link to={'/all-toys'} className='font-bold text-2xl text-white rounded-lg  px-8 py-3 bg-[#ab6032f1]'>View Products</Link>
+                                <Link to={'/all-toys'} className='font-bold text-2xl text-white rounded-lg  px-8 py-3 bg-[#612500f1]'>View Products</Link>
                             </div>
                         </div>
                     </div>

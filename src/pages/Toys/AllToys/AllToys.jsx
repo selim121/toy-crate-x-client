@@ -33,16 +33,16 @@ const AllToys = () => {
         <div data-aos="zoom-in-left" data-aos-duration="2000" className="py-8 overflow-x-auto w-full bg-[#e2d5d566]">
             <div className="py-5 text-center">
                 <input onChange={(e) => setSearchText(e.target.value)} type="text" placeholder="Search Toy by name" className="input input-bordered" />
-                <button onClick={handleSearch} className="bg-[#ab6032f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md ms-3">Search</button>
+                <button onClick={handleSearch} className="bg-[#612500f1] hover:bg-[#944e22f1] text-white py-2 px-4 rounded-md ms-3">Search</button>
             </div>
             <table className="table w-full">
                 <thead>
                     <tr>
-                        <th className="text-[#ab6032f1]">Product Name</th>
-                        <th className="text-[#ab6032f1]">Price</th>
-                        <th className="text-[#ab6032f1]">Category</th>
-                        <th className="text-[#ab6032f1]">Quantity</th>
-                        <th className="text-[#ab6032f1]">Seller</th>
+                        <th className="text-[#612500f1]">Product Name</th>
+                        <th className="text-[#612500f1]">Price</th>
+                        <th className="text-[#612500f1]">Category</th>
+                        <th className="text-[#612500f1]">Quantity</th>
+                        <th className="text-[#612500f1]">Seller</th>
                         <th></th>
                     </tr>
                 </thead>
