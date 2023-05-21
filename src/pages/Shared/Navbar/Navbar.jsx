@@ -45,7 +45,6 @@ const Navbar = () => {
         }
       }, [user?.email])
 
-    // console.log(user);
 
     return (
         <>
@@ -54,6 +53,9 @@ const Navbar = () => {
                     <Link to={'/'} className="">
                         <img src={logo} alt="" />
                     </Link>
+                </div>
+                <div className="lg:hidden flex items-center">
+                    <h1 className="text-[#612500f1] font-bold text-2xl">ToyCrateX</h1>
                 </div>
             </div>
 

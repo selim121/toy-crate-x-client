@@ -3,6 +3,7 @@ import logo from '../../../assets/logo.svg';
 import phone from '../../../assets/images/icon/phone.svg';
 import email from '../../../assets/images/icon/email.svg';
 import location from '../../../assets/images/icon/location.svg';
+import { Form, InputGroup } from 'react-daisyui';
 
 
 const Footer = () => {
@@ -24,6 +25,12 @@ const Footer = () => {
                     <a href='https://www.facebook.com/selimhossain.sh1/' target="_blank" rel="noopener noreferrer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg>
                     </a>
+                    <Form className="my-1">
+                        <InputGroup>
+                            <input type="email" placeholder="Your email" className='w-1/2 p-1 rounded-l-lg'/>
+                            <input type="submit" value="Send" className='bg-[#612500f1] text-white p-1 rounded-r-lg'/>
+                        </InputGroup>
+                    </Form>
                 </div>
                 <div>
                     <span className="footer-title text-[#612500f1]">Company</span>

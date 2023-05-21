@@ -6,7 +6,7 @@ const Blogs = () => {
 
     return (
         <>
-            <div className="bg-[#e2d5d566] py-12 px-24 space-y-4">
+            <div className="bg-[#e2d5d566] py-12 px-2 md:px-24 space-y-4">
 
                 <div data-aos="fade-up" data-aos-duration="1000">
                     <h1 className="text-3xl font-bold">(i) <span className="text-[#612500f1]">What is an access token and refresh token?</span></h1>
